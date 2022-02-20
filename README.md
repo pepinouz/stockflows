@@ -5,8 +5,10 @@
 
 > Voici un skelette d'application Next JS qui comprends toutes les base : nextjs, authentification, components de base pour structurer une application (sidebar, navbar, container), tailwindcss et bien plus encore.
 
+<div align="center">
 <h1>Under the hood</h1>
 <p>L'application viens avec différente technologie de base</p>
+</div>
 
 <h2>UI</h2>
 <h3>Tailwind CSS</h3>
