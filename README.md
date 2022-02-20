@@ -8,8 +8,8 @@
 <h3>Under the hood</h3>
 <p>L'application viens avec différente technologie de base</p>
 
-<h4>NextJS</h4>
 <h4>Tailwind CSS</h4>
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg">
 <h4>ClerkJS</h4>
 
 ## Install
