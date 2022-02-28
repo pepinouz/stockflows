@@ -9,7 +9,7 @@
  */
 
 import Container from "./Container";
-import Navbar from "./Navbar/Navabar";
+import Navbar from "./Navbar/Navbar";
 import Sidebar from "./Sidebar/Sidebar";
 
 function Base({ type, children }) {

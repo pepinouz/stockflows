@@ -17,14 +17,14 @@ function SidebarItem({ title, icon, link }) {
   };
 
   return (
-    <ul class="space-y-2 cursor-pointer">
+    <ul className="space-y-2 cursor-pointer">
       <li>
         <a
           onClick={(e) => handleClick(e)}
-          class="flex items-center p-2 text-base font-normal text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          className="flex items-center p-2 text-base font-normal text-sidebar-items rounded-lg hover:bg-gray-300"
         >
           {icon}
-          <span class="ml-3">{title}</span>
+          <span className="ml-3">{title}</span>
         </a>
       </li>
     </ul>

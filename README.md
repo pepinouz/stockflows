@@ -22,7 +22,7 @@
 <div align="center">
 <h4>FlowBite</h4>
 <img width="150px" src="https://camo.githubusercontent.com/2556ddabc1abae4826d965b1c1351563687c75b088d25e5f050000b30cbcbe28/68747470733a2f2f666c6f77626974652e73332e616d617a6f6e6177732e636f6d2f666c6f77626974652d6c6f676f2d746578742e737667">
-<p>Une librairie de components basé sur Tailwind</p>
+<p>Une librairie de components basé sur Tailwind.</p>
 <p>Lien vers la documentation: <a href="https://flowbite.com/docs/getting-started/introduction/">https://flowbite.com/docs/getting-started/introduction/</a></p>
 </div>
 
@@ -31,14 +31,14 @@
 <h2>Utilities</h2>
 <h3>ClerkJS</h3>
 <img width="100px" src="https://pbs.twimg.com/profile_images/1358571909642932225/PuQyVQGa_400x400.jpg">
-<p>Clerk JS pour facilité l'authentification et la gestion des utilisateurs</p>
+<p>Clerk JS pour facilité l'authentification et la gestion des utilisateurs.</p>
 <p>Lien vers la documentation: <a href="https://docs.clerk.dev">https://docs.clerk.dev/</a></p>
 </div>
 
 <div align="center">
 <h3>Formik</h3>
 <img width="100px" src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png">
-<p>Formik pour facilité le développement et la maintenance de formulaire</p>
+<p>Formik pour facilité le développement et la maintenance de formulaire.</p>
 <p>Lien vers la documentation: <a href="https://formik.org">https://formik.org/</a></p>
 </div>
 
