@@ -50,30 +50,15 @@ const sidebarItems = (
       }
       items={
         <>
-          <li>
-            <a
-              href="#"
-              className="flex items-center w-full p-2 text-base font-normal text-sidebar-items transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
-            >
-              Products
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center w-full p-2 text-base font-normal text-sidebar-items transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
-            >
-              Billing
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center w-full p-2 text-base font-normal text-sidebar-items transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
-            >
-              Invoice
-            </a>
-          </li>
+          <SidebarItem
+            title="Products"
+          />
+          <SidebarItem
+            title="Billing"
+          />
+          <SidebarItem
+            title="Invoide"
+          />
         </>
       }
     />

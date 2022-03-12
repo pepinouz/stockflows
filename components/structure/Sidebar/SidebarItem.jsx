@@ -21,7 +21,7 @@ function SidebarItem({ title, icon, link }) {
       <li>
         <a
           onClick={(e) => handleClick(e)}
-          className="flex items-center p-2 text-base font-normal text-sidebar-items rounded-lg hover:bg-gray-300"
+          className="flex items-center p-2 text-base font-normal text-sidebar-items rounded-lg hover:bg-gray-100"
         >
           {icon}
           <span className="ml-3">{title}</span>
