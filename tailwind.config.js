@@ -25,7 +25,7 @@ module.exports = {
         "sidebar-items" : "#22306a"
       },
       fontFamily: {
-        main: ['Arvo']
+        main: ['Rubik']
       }
     },
   },
