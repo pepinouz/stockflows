@@ -6,7 +6,7 @@
  */
 
 function PageHeading({ text }) {
-  return <h1 className="text-2xl text-primary-full font-main font-bold">{text}</h1>;
+  return <h1 className="text-3xl text-primary-full font-main font-bold">{text}</h1>;
 }
 
 export default PageHeading

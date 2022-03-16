@@ -1,6 +1,13 @@
-import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/nextjs';
-import { useRouter } from 'next/router';
-import '../styles/globals.css'
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+} from "@clerk/nextjs";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtoolsPanel } from "react-query/devtools";
+import { useRouter } from "next/router";
+import "../styles/globals.css";
 
 //  List pages you want to be publicly accessible, or leave empty if
 //  every page requires authentication. Use this naming strategy:
@@ -9,6 +16,9 @@ import '../styles/globals.css'
 //   "/foo/bar"       for pages/foo/bar.js
 //   "/foo/[...bar]"  for pages/foo/[...bar].js
 const publicPages = [];
+
+// Initialize react query
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   // Get the pathname
@@ -21,18 +31,23 @@ function MyApp({ Component, pageProps }) {
   // Otherwise, use Clerk to require authentication
   return (
     <ClerkProvider>
-      {isPublicPage ? (
-        <Component {...pageProps} />
-      ) : (
-        <>
-          <SignedIn>
+      <QueryClientProvider client={queryClient}>
+        {isPublicPage ? (
+          <>
             <Component {...pageProps} />
-          </SignedIn>
-          <SignedOut>
-            <RedirectToSignIn />
-          </SignedOut>
-        </>
-      )}
+          </>
+        ) : (
+          <>
+            <SignedIn>
+              <Component {...pageProps} />
+              {/* <ReactQueryDevtoolsPanel /> */}
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+        )}
+      </QueryClientProvider>
     </ClerkProvider>
   );
 }
