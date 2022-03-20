@@ -1,5 +1,4 @@
 import { requireAuth } from "@clerk/nextjs/api";
-import { getRequest } from "../../utils/request";
 const iexApiKey = process.env.IEX_TRADING_API_KEY;
 const apiUrl = "https://cloud.iexapis.com/v1";
 
@@ -23,7 +22,7 @@ export default requireAuth(async (req, res) => {
             apiUrl + "/stock/" + ticker + "/logo?token=" + iexApiKey
           );
           let data = await logo.json();
-          console.log(data)
+          console.log(data);
           res.status(200).json({ request: data });
         } else {
           res.status(401).json({ error: "The is no ticker provided" });
@@ -42,6 +41,21 @@ export default requireAuth(async (req, res) => {
           res.status(200).json({ request: data });
         } else {
           res.status(401).json({ error: "The is no ticker provided" });
+        }
+        break;
+      // SEARCH REQUEST
+      case "search":
+        // Check if there is a ticker in the request
+        if (req.query.fragment) {
+          let fragment = req.query.fragment;
+          console.log(fragment);
+          let company = await fetch(
+            apiUrl + "/search/" + fragment + "?token=" + iexApiKey
+          );
+          let data = await company.json();
+          res.status(200).json({ request: data });
+        } else {
+          res.status(401).json({ error: "The is no fragment provided" });
         }
         break;
       default:

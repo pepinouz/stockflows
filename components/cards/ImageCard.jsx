@@ -28,7 +28,7 @@ function ImageCard({
               className="flex justify-center overflow-hidden h-28"
               onClick={onClick}
             >
-              <img className="rounded-t-2xl p-2 object-cover" src={image} alt="" />
+              <img className="rounded-t-2xl p-4 object-fit" src={image} alt="" />
             </a>
             <div className="p-5">
               <h5 className="mb-2 text-2xl font-bold tracking-tight font-main text-primary-full dark:text-white">
