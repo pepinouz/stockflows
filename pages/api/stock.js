@@ -17,7 +17,6 @@ export default requireAuth(async (req, res) => {
         // Check if there is a ticker in the request
         if (req.query.ticker) {
           let ticker = req.query.ticker;
-          console.log(ticker);
           let logo = await fetch(
             apiUrl + "/stock/" + ticker + "/logo?token=" + iexApiKey
           );
@@ -33,7 +32,6 @@ export default requireAuth(async (req, res) => {
         // Check if there is a ticker in the request
         if (req.query.ticker) {
           let ticker = req.query.ticker;
-          console.log(ticker);
           let company = await fetch(
             apiUrl + "/stock/" + ticker + "/company?token=" + iexApiKey
           );

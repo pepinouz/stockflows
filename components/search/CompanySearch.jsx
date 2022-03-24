@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useUser } from "@clerk/nextjs";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { useQuery } from "react-query";
-import { fetchLogos } from "../../lib/api";
+import { fetchCompany, fetchLogos } from "../../lib/api";
+import CompanyResume from "../cards/CompanyResume";
 import AdvancedSearch from "./AdvancedSearch";
 
 const fetchSearch = async (input) => {
@@ -8,11 +10,19 @@ const fetchSearch = async (input) => {
   return searchRes.json();
 };
 
-const CompanySearch = () => {
+const CompanySearch = forwardRef((props, ref) => {
+  // Use the useUser hook to get the Clerk.user object
+  const user = useUser();
   // Store and update the search input value
   const [searchInput, setSearchInput] = useState();
   // Store the search result list
   const [listElements, setElementsList] = useState([]);
+  // Store the selected company ticker symbol
+  const [selectedCompany, setSelectedCompany] = useState("");
+  // Store selected company logo
+  const [selectedLogo, setSelectedLogo] = useState();
+  // Store company info
+  const [selectedInfo, setSelectedInfo] = useState();
 
   // Create the list elements with the search results
   const createList = async (data) => {
@@ -43,16 +53,69 @@ const CompanySearch = () => {
     }
   );
 
+  // Run the following when a companys is selected
+  const handleCompanySelection = async (e) => {
+    console.log(e);
+    let thicker = e.target.attributes.title.value;
+    let image = e.target.attributes.avatar.value;
+    console.log(image);
+    // Set the selected company image logo
+    setSelectedLogo(image);
+    // Get the company info
+    let company = await fetchCompany(thicker);
+    setSelectedInfo(company.request);
+    console.log(company);
+    // Set the selected company thicker
+    setSelectedCompany(thicker);
+  };
+
+  // Function in the imperative handle hook can be call from the parent
+  useImperativeHandle(ref, () => ({
+    clearCompanySearch() {
+      console.log("Cancel company selection");
+      setSelectedCompany("");
+    },
+    async userAddProjection(e) {
+      e.preventDefault()
+      // Create the DB objetc
+      let body = {
+        request: "addProjection",
+        userId: user.id,
+        thicker: selectedCompany
+      }
+      let dbRes = await fetch("api/db/projections", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })
+      let dbResData = await dbRes.json()
+      console.log(dbResData)
+    }
+  }));
+
   return (
     <div className="w-full flex justify-center">
-      <div className="w-80">
-        <AdvancedSearch
-          onChange={(e) => setSearchInput(e.target.value)}
-          results={listElements}
+      {selectedCompany != "" ? (
+        <CompanyResume
+          title={selectedInfo.companyName}
+          image={selectedLogo}
+          description={selectedInfo.description}
+          ceo={selectedInfo.CEO}
         />
-      </div>
+      ) : (
+        <div className="w-80">
+          <AdvancedSearch
+            onClick={(e) => handleCompanySelection(e)}
+            onChange={(e) => setSearchInput(e.target.value)}
+            results={listElements}
+          />
+        </div>
+      )}
     </div>
   );
-};
+});
 
 export default CompanySearch;

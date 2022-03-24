@@ -26,16 +26,18 @@ function SimpleList({ elements, onClick }) {
 
       rows.push(
         <div
+          avatar={element.avatar}
+          title={element.title}
           onClick={onClick}
           className={"grid grid-cols-2 items-center p-2 hover:bg-slate-200 cursor-pointer " + rowColor}
         >
           <img
-            className="h-12 w-12 object-contain rounded-full"
+            className="h-12 w-12 object-contain rounded-full pointer-events-none"
             src={element.avatar}
           />
-          <div>
-            <p className=" text-slate-700 text-sm">{element.title}</p>
-            <p className=" text-slate-500 text-xs">{element.description}</p>
+          <div className="pointer-events-none">
+            <p className=" text-slate-700 text-sm pointer-events-none">{element.title}</p>
+            <p className=" text-slate-500 text-xs pointer-events-none">{element.description}</p>
           </div>
         </div>
       );

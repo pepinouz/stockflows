@@ -1,6 +1,6 @@
 import PrimaryButton from "../buttons/PrimaryButton";
 
-function DefaultModal({ content, header, showModal, onClose, onCancel, onOk }) {
+function DefaultModal({ content, header, showModal, onClose, onCancel, onOk, confirmLabel }) {
   return (
     <div
       id="defaultModal"
@@ -37,7 +37,7 @@ function DefaultModal({ content, header, showModal, onClose, onCancel, onOk }) {
           </div>
           <div className="p-6 space-y-6">{content}</div>
           <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-            <PrimaryButton label={"Ok"} onClick={onOk} />
+            <PrimaryButton label={confirmLabel} onClick={onOk} />
             <button
               onClick={onCancel}
               data-modal-toggle="defaultModal"
