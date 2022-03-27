@@ -76,24 +76,28 @@ const CompanySearch = forwardRef((props, ref) => {
       setSelectedCompany("");
     },
     async userAddProjection(e) {
-      e.preventDefault()
-      // Create the DB objetc
-      let body = {
-        request: "addProjection",
-        userId: user.id,
-        thicker: selectedCompany
+      e.preventDefault();
+      // Check if there is a company selected
+      if (selectedCompany != "") {
+        // Create the DB objetc
+        let body = {
+          userId: user.id,
+          thicker: selectedCompany,
+        };
+        let dbRes = await fetch("api/projections", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+        let dbResData = await dbRes.json();
+        console.log(dbResData);
+      } else {
+        alert("No company selected");
       }
-      let dbRes = await fetch("api/db/projections", {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      })
-      let dbResData = await dbRes.json()
-      console.log(dbResData)
-    }
+    },
   }));
 
   return (
